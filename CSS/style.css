@@ -1,0 +1,181 @@
+/* style.css */
+
+/* Định nghĩa màu chữ tùy chỉnh */
+.custom-text-color {
+    color: #A37C6B;
+}
+
+/* Các kiểu chữ khác */
+h2 {
+    font-size: 1.875rem; /* Tương đương với text-3xl trong Tailwind */
+    font-weight: bold;    /* Tương đương với font-bold trong Tailwind */
+}
+
+.sidebar-item:hover {
+    background-color: rgba(217, 217, 217, 0.23);
+    border-radius: 8px;
+}
+.table-container {
+    overflow-x: auto;
+}
+.sidebar {
+    background-image: url('/demo_cms_web/CSS/images/sidebarbg.png');
+    background-size: cover;
+    background-position: center;
+}
+.submenu {
+    display: none;
+    padding-left: 1rem;
+}
+.submenu-item {
+    padding-left: 1rem;
+}
+.sidebar-item.active .submenu {
+    display: block;
+}
+.main-content.active {
+    display: block;
+}
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 700px; /* Chiều rộng của drawer */
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    transform: translateX(100%); /* Đẩy drawer ra ngoài */
+    z-index: 1000; /* Nằm trên overlay */
+}
+.drawer-content {
+    padding: 20px;
+    position: relative;
+}
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Khoảng cách dưới header */
+}
+
+.drawer.open {
+    transform: translateX(0);
+}
+
+#addDrawer {
+    display: none; /* Ẩn drawer mặc định */
+}
+
+#addDrawer.open {
+    display: flex; /* Hiện drawer khi có class open */
+}
+
+.drawer-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+.drawer .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+}
+.resizable {
+    resize: horizontal;
+    overflow: auto;
+    max-height: 3em;
+}
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    padding: 0;
+}
+.pagination li {
+    margin: 0 5px;
+}
+.pagination a {
+    display: block;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+}
+.pagination a:hover {
+    background-color: #f5eded;
+}
+
+
+.file-upload {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #F5EDED;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-name {
+    display: block;
+    margin-top: 10px;
+    color: gray;
+}
+
+.upload-button,
+.confirm-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.note {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.download-link {
+    margin-top: 20px;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu mờ */
+    z-index: 999; /* Nằm trên nội dung chính */
+    display: none; /* Ẩn mặc định */
+}
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.table-responsive {
+    max-height: 200px; /* Adjust height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+}

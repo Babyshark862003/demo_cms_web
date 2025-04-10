@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/demo_cms_web/CSS/style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-1/6 text-white min-h-screen p-4 sidebar">
+            <div class="text-center mb-8">
+                <img alt="Petal Pay Logo" class="mx-auto mb-4" height="50" src="/demo_cms_web/CSS/images/logo.png" width="300"/>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="dashboard.html">
+                            <i class="fas fa-tachometer-alt mr-2"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2" onclick="toggleSubmenu(this)">
+                        <a class="flex items-center justify-between" href="#">
+                            <span class="flex items-center">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Commission
+                            </span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="mb-4 submenu-item p-2" onclick="showContent('reconciliation')">
+                                <a class="flex items-center" href="reconciliation.html">
+                                    <i class="fas fa-sync-alt mr-2"></i>
+                                    Reconciliation
+                                </a>
+                            </li>
+                            <li class="mb-4 submenu-item p-2">
+                                <a class="flex items-center" onclick="showContent('payment')">
+                                    <i class="fas fa-credit-card mr-2"></i>
+                                    Payment
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="influencer.html">
+                            <i class="fas fa-user-friends mr-2"></i>
+                            Influencer
+                        </a>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="product.html">
+                            <i class="fas fa-box mr-2"></i>
+                            Product
+                        </a>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="promotion.html">
+                            <i class="fas fa-bullhorn mr-2"></i>
+                            Promotion
+                        </a>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="system.html">
+                            <i class="fas fa-cogs mr-2"></i>
+                            System
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <div class="w-5/6 p-8 main-content bg-[#F5EDED]" id="payment">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-3xl font-bold text-[#A37C6B]">Payment</h2>
+                <div class="flex items-center">
+                    <img alt="User Avatar" class="rounded-full mr-2" height="40" src="https://storage.googleapis.com/a1aa/image/UOcGYnK8ITsCcPmZuC4lFSmnbn5mPsjOFi581rmF9Lw.jpg" width="40"/>
+                    <i class="fas fa-bell text-xl"></i>
+                </div>
+            </div>
+            <div class="grid grid-cols-4 gap-2 mb-4">
+                <div class="bg-white p-4 rounded shadow flex items-center" style="border-radius: 8px;">
+                    <i class="fas fa-user-friends text-3xl text-[#A37C6B] mr-4"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#A37C6B]">Total Influencers</h3>
+                        <p class="text-2xl font-bold">196</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded shadow flex items-center" style="border-radius: 8px;">
+                    <i class="fas fa-dollar-sign text-3xl text-[#A37C6B] mr-4"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#A37C6B]">Total Creator CMS</h3>
+                        <p class="text-2xl font-bold">$350.4</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded shadow flex items-center" style="border-radius: 8px;">
+                    <i class="fas fa-coins text-3xl text-[#A37C6B] mr-4"></i>
+                    <div>
+                        <h3 class="text-lg font-semibold text-[#A37C6B]">Total TAP CMS</h3>
+                        <p class="text-2xl font-bold">$642.39</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded shadow" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <div class="flex items-center justify-start mb-2 flex-wrap">
+                    <div class="flex flex-col mr-2 w-full md:w-auto">
+                        <label class="text-[#A37C6B] mb-1" style="font-size: 13px;">Search</label>
+                        <input class="border rounded p-2" placeholder="Search" type="text" style="border-radius: 8px; width: 320px;"/>
+                    </div>
+                    <div class="flex flex-col mr-2 w-full md:w-auto">
+                        <label class="text-[#A37C6B] mb-1" style="font-size: 13px;">Payment Status</label>
+                        <select class="border rounded p-2" style="border-radius: 8px; width: 170px;">
+                            <option>Paid</option>
+                            <option>Reconciling</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col mr-2 w-full md:w-auto">
+                        <label class="text-[#A37C6B] mb-1" style="font-size: 13px;">CMS range</label>
+                        <select class="border rounded p-2" style="border-radius: 8px; width: 170px;">
+                            <option> < $100 </option>
+                            <option> $100 - $500 </option>
+                            <option> $500 - $1000 </option>
+                            <option> $1000 - $2000 </option>
+                            <option> > $2000 </option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col mr-2 w-full md:w-auto">
+                        <label class="text-[#A37C6B] mb-1" style="font-size: 13px;">Time Range</label>
+                        <div class="flex space-x-2">
+                            <input class="border rounded p-2" type="date" id="startDate" style="border-radius: 8px;"/>
+                            <input class="border rounded p-2" type="date" id="endDate" style="border-radius: 8px;"/>
+                        </div>
+                    </div>
+                    <div class="flex items-end mr-2 w-full md:w-auto"> 
+                        <button id="editStatusBtn" class="bg-[#F5EDED] hover:bg-[#F5EDED]-700 text-[#A37C6B] px-4 py-2 rounded-md disabled:opacity-50" disabled>
+                            <i class="fas fa-edit mr-2"></i>Edit Status
+                        </button>
+                    </div>
+                </div>
+                    <div class="table-container">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="bg-[#F5EDED]">
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <input type="checkbox" id="headerCheckbox" class="h-4 w-4 text-blue-600 rounded">
+                                    </th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Creator Username</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Status</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Actual CMS</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Gmail</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Bank Account</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Bonus</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Approved CMS</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Occurrence Month</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Payment Date</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Transaction ID</th>
+                                    <th class="border-b p-2 text-[#A37C6B]">Invoice Number</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex justify-end items-center mt-4">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Status Modal -->
+    <div id="statusModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-96">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Change Status</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <p class="text-gray-600 mb-4">Chọn trạng thái bạn muốn thay đổi</p>
+            
+            <div class="space-y-3">
+                <div class="flex items-center">
+                    <input id="reconciling" name="status" type="radio" class="h-4 w-4 text-blue-600">
+                    <label for="reconciling" class="ml-2 block text-sm text-gray-700">Reconciling</label>
+                </div>
+                <div class="flex items-center">
+                    <input id="awaitingPayment" name="status" type="radio" class="h-4 w-4 text-blue-600">
+                    <label for="awaitingPayment" class="ml-2 block text-sm text-gray-700">Awaiting Payment</label>
+                </div>
+                <div class="flex items-center">
+                    <input id="paid" name="status" type="radio" class="h-4 w-4 text-blue-600">
+                    <label for="paid" class="ml-2 block text-sm text-gray-700">Paid</label>
+                </div>
+                <div class="flex items-center">
+                    <input id="postpone" name="status" type="radio" class="h-4 w-4 text-blue-600">
+                    <label for="postpone" class="ml-2 block text-sm text-gray-700">Postpone</label>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex justify-end space-x-3">
+                <button id="cancelChange" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    Cancel
+                </button>
+                <button id="confirmChange" class="px-4 py-2 bg-[#A37C6B] text-white rounded-md text-sm font-medium hover:bg-[#9E7968]">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentPage = 1; // Variable to track the current page
+        let selectedFile = null; // Global variable to store the selected file
+        function toggleSubmenu(element) {
+            element.classList.toggle('active');
+        }
+
+        function showContent(contentId) {
+            document.querySelectorAll('.main-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(contentId).classList.add('active');
+        }
+
+        function loadPaymentData() {
+            fetch('/demo_cms_web/Data_payment')  // Ensure this URL matches your Flask route
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const tableBody = document.getElementById('paymentTable'); // Ensure this matches your table ID
+                tableBody.innerHTML = ''; // Clear existing data
+        
+                data.forEach(item => {
+                    const row = `<tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <input type="checkbox" class="row-checkbox h-4 w-4 text-blue-600 rounded">
+                        </td>
+                        <td class="border-b p-2">${item['Creator Username']}</td>
+                        <td class="border-b p-2">${item['Status']}</td>
+                        <td class="border-b p-2">${item['Actual CMS']}</td>
+                        <td class="border-b p-2">${item['Gmail']}</td>
+                        <td class="border-b p-2">${item['Bank Account']}</td>
+                        <td class="border-b p-2">${item['Bonus']}</td>
+                        <td class="border-b p-2">${item['Approved CMS']}</td>
+                        <td class="border-b p-2">${item['Occurrence Month']}</td>
+                        <td class="border-b p-2">${item['Payment Date']}</td>
+                        <td class="border-b p-2">${item['Transaction ID']}</td>
+                        <td class="border-b p-2">${item['Invoice Number']}</td>
+                    </tr>`;
+                    tableBody.insertAdjacentHTML('beforeend', row); // Add new row to the table
+                });
+                // Reapply event listeners to new checkboxes
+                attachCheckboxEventListeners();
+            })
+            .catch(error => console.error('Error fetching payment data:', error));
+        }
+        function updatePagination(totalPages) {
+            const paginationContainer = document.querySelector('.pagination');
+            paginationContainer.innerHTML = ''; // Clear old content
+        
+            const pageCount = 3; // Number of pages to show
+            let startPage = Math.max(1, currentPage - Math.floor(pageCount / 2));
+            let endPage = Math.min(totalPages, startPage + pageCount - 1);
+        
+            // Adjust startPage if endPage is at totalPages
+            if (endPage === totalPages) {
+                startPage = Math.max(1, totalPages - pageCount + 1);
+            }
+        
+            // Create Previous button
+            const prevButton = document.createElement('li');
+            prevButton.className = 'page-item';
+            prevButton.innerHTML = `<a class="page-link" href="#" aria-label="Previous" onclick="changePage(currentPage - 1)"><span aria-hidden="true">&laquo;</span></a>`;
+            if (currentPage === 1) {
+                prevButton.classList.add('disabled'); // Disable Previous button if on first page
+            }
+            paginationContainer.appendChild(prevButton);
+        
+            // Create page buttons
+            for (let i = startPage; i <= endPage; i++) {
+                const pageItem = document.createElement('li');
+                pageItem.className = 'page-item';
+                pageItem.innerHTML = `<a class="page-link" href="#" onclick="changePage(${i})">${i}</a>`;
+                if (i === currentPage) {
+                    pageItem.classList.add('active'); // Highlight current page
+                }
+                paginationContainer.appendChild(pageItem);
+            }
+        
+            // Create Next button
+            const nextButton = document.createElement('li');
+            nextButton.className = 'page-item';
+            nextButton.innerHTML = `<a class="page-link" href="#" aria-label="Next" onclick="changePage(currentPage + 1)"><span aria-hidden="true">&raquo;</span></a>`;
+            if (currentPage === totalPages) {
+                nextButton.classList.add('disabled'); // Disable Next button if on last page
+            }
+            paginationContainer.appendChild(nextButton);
+        }
+
+        // Attach event listeners to checkboxes
+        function attachCheckboxEventListeners() {
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+            const editStatusBtn = document.getElementById('editStatusBtn');
+        
+            rowCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    updateEditButton();
+                });
+            });
+        }
+
+        // Function to update the edit button's disabled state
+        function updateEditButton() {
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+            const editStatusBtn = document.getElementById('editStatusBtn');
+            const anyChecked = Array.from(rowCheckboxes).some(checkbox => checkbox.checked);
+            editStatusBtn.disabled = !anyChecked;
+        }
+    
+        // Load data when the page is loaded
+        window.onload = loadPaymentData;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerCheckbox = document.getElementById('headerCheckbox');
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+            const editStatusBtn = document.getElementById('editStatusBtn');
+            const statusModal = document.getElementById('statusModal');
+            const closeModal = document.getElementById('closeModal');
+            const cancelChange = document.getElementById('cancelChange');
+        
+            // Function to update the edit button's disabled state
+            function updateEditButton() {
+                const anyChecked = Array.from(rowCheckboxes).some(checkbox => checkbox.checked);
+                editStatusBtn.disabled = !anyChecked;
+            }
+        
+            // Header checkbox controls all row checkboxes
+            headerCheckbox.addEventListener('change', function() {
+                rowCheckboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+                updateEditButton();
+            });
+        
+            // Row checkboxes update the edit button state
+            rowCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateEditButton);
+            });
+        
+            // Edit Status button opens modal
+            editStatusBtn.addEventListener('click', function() {
+                statusModal.classList.remove('hidden');
+            });
+        
+            // Close modal handlers
+            function closeModalHandler() {
+                statusModal.classList.add('hidden');
+            }
+        
+            closeModal.addEventListener('click', closeModalHandler);
+            cancelChange.addEventListener('click', closeModalHandler);
+        
+            // Confirm change handler
+            document.getElementById('confirmChange').addEventListener('click', function() {
+                const selectedStatus = document.querySelector('input[name="status"]:checked');
+                if (selectedStatus) {
+                    alert(`Status will be changed to ${selectedStatus.nextElementSibling.textContent}`);
+                    closeModalHandler();
+                } else {
+                    alert('Please select a status');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

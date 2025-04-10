@@ -1,0 +1,328 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>System</title>
+    <!--css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<style>
+    .sidebar-item:hover {
+        background-color: rgba(217, 217, 217, 0.23);
+        border-radius: 8px;
+    }
+    .sidebar {
+        background-image: url('/demo_cms_web/CSS/images/sidebarbg.png');
+        background-size: cover;
+        background-position: center;
+    }
+    .submenu {
+        display: none;
+        padding-left: 1rem;
+    }
+    .submenu-item {
+        padding-left: 1rem;
+    }
+    .sidebar-item.active .submenu {
+        display: block;
+    }
+    .table-container {
+        width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng */
+    }
+    .table-column {
+        width: 33%; /* Chiều rộng cho mỗi cột */
+    }
+    .text-right {
+        text-align: right; /* Căn lề phải cho cột */
+    }
+    /* Đặt chiều rộng cho cột Actions */
+    .actions-column {
+        width: 20%; /* Chiều rộng cho cột Actions */
+    }
+    /* Đặt chiều rộng cho cột Value để căn lề dựa trên cột Actions */
+    .value-column {
+        width: 20%; /* Chiều rộng cho cột Value */
+    }
+</style>
+</head>
+<body>
+<div class="bg-gray-100 font-sans">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-1/6 text-white min-h-screen p-4 sidebar">
+            <div class="text-center mb-8">
+                <img alt="Petal Pay Logo" class="mx-auto mb-4" height="50" src="/demo_cms_web/CSS/images/logo.png" width="300"/>
+            </div>
+            <nav>
+                <ul>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="dashboard.html">
+                            <i class="fas fa-tachometer-alt mr-2"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2" onclick="toggleSubmenu(this)">
+                        <a class="flex items-center justify-between" href="#">
+                            <span class="flex items-center">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Commission
+                            </span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="mb-4 submenu-item p-2">
+                                <a class="flex items-center" href="reconciliation.html">
+                                    <i class="fas fa-sync-alt mr-2"></i>
+                                    Reconciliation
+                                </a>
+                            </li>
+                            <li class="mb-4 submenu-item p-2">
+                                <a class="flex items-center" href="payment.html">
+                                    <i class="fas fa-credit-card mr-2"></i>
+                                    Payment
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="influencer.html">
+                            <i class="fas fa-user-friends mr-2"></i>
+                            Influencer
+                        </a>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="product.html">
+                            <i class="fas fa-box mr-2"></i>
+                            Product
+                        </a>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" href="promotion.html">
+                            <i class="fas fa-bullhorn mr-2"></i>
+                            Promotion
+                        </a>
+                    </li>
+                    <li class="mb-4 sidebar-item p-2">
+                        <a class="flex items-center" onclick="showContent('system')">
+                            <i class="fas fa-cogs mr-2"></i>
+                            System
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <div class="w-5/6 p-8 main-content bg-[#F5EDED]" id="system">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-3xl font-bold text-[#A37C6B]">System</h2>
+                <div class="flex items-center">
+                    <img alt="User Avatar" class="rounded-full mr-2" height="40" src="https://storage.googleapis.com/a1aa/image/UOcGYnK8ITsCcPmZuC4lFSmnbn5mPsjOFi581rmF9Lw.jpg" width="40"/>
+                    <i class="fas fa-bell text-xl"></i>
+                </div>
+            </div>
+            <!-- First Table -->
+            <div class="bg-white p-4 rounded shadow mb-4">
+                <div class="table-container">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-[#F5EDED]">
+                                <th class="border-b p-2 text-[#A37C6B]">Variables</th>
+                                <th class="border-b p-2 text-[#A37C6B] text-right value-column">Value (%)</th>
+                                <th class="border-b p-2 text-[#A37C6B] text-right value-column">Effective Date</th>
+                                <th class="border-b p-2 text-[#A37C6B] text-right value-column">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border-b p-2">Affiliate Commission Rate</td>
+                                <td class="border-b p-2 text-right">15%</td>
+                                <td class="border-b p-2 text-right" id="affiliateEffectiveDate">N/A</td>
+                                <td class="border-b p-4 text-right">
+                                    <button class="text-blue-500" onclick="openEditModal('commissionRate')"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Second Table -->
+            <div class="bg-white p-4 rounded shadow">
+                <div class="table-container">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-[#F5EDED]">
+                                <th class="border-b p-2 text-[#A37C6B]">Variables</th>
+                                <th class="border-b p-2 text-[#A37C6B] text-right value-column">Value (%)</th>
+                                <th class="border-b p-2 text-[#A37C6B] text-right value-column">Effective Date</th>
+                                <th class="border-b p-2 text-[#A37C6B] text-right value-column">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border-b p-2">Network Fee</td>
+                                <td class="border-b p-2 text-right">5%</td>
+                                <td class="border-b p-2 text-right" id="affiliateEffectiveDate">N/A</td>
+                                <td class="border-b p-4 text-right">
+                                    <button class="text-blue-500" onclick="openEditModal('networkFee')"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal for Commission Rate -->
+    <div id="editCommissionRateModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-1/3">
+            <h2 class="text-xl font-bold mb-4">Edit Affiliate Commission Rate</h2>
+            <form id="editCommissionRateForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Effective Date</label>
+                    <input class="border border-gray-300 rounded p-2 w-full" id="effectiveDateCommission" type="date"/>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Affiliate Commission Rate (%)</label>
+                    <input class="border border-gray-300 rounded p-2 w-full" id="commissionRate" type="number"/>
+                </div>
+                <div class="flex justify-end">
+                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded mr-2" type="button" onclick="closeEditModal('commissionRate')">Cancel</button>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Modal for Network Fee -->
+    <div id="editNetworkFeeModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-1/3">
+            <h2 class="text-xl font-bold mb-4">Edit Network Fee</h2>
+            <form id="editNetworkFeeForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Effective Date</label>
+                    <input class="border border-gray-300 rounded p-2 w-full" id="effectiveDateNetwork" type="date"/>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Network Fee (%)</label>
+                    <input class="border border-gray-300 rounded p-2 w-full" id="networkFee" type="number"/>
+                </div>
+                <div class="flex justify-end">
+                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded mr-2" type="button" onclick="closeEditModal('networkFee')">Cancel</button>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleSubmenu(element) {
+        element.classList.toggle('active');
+    }
+
+    function showContent(contentId) {
+        document.querySelectorAll('.main-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        document.getElementById(contentId).classList.add('active');
+    }
+
+    let settings = [];
+
+    // Load settings from server on page load
+    window.onload = function() {
+        loadSettings();
+    };
+    
+    function loadSettings() {
+        fetch('/api/settings')
+            .then(response => response.json())
+            .then(data => {
+                settings = data;
+                updateTable(); // Update the UI with the retrieved settings
+            })
+            .catch(error => console.error('Error loading settings:', error));
+    }
+
+    function openEditModal(type) {
+        if (type === 'commissionRate') {
+            const commission = settings[0];
+            document.getElementById('commissionRate').value = commission.value;
+            document.getElementById('effectiveDateCommission').value = commission.effectiveDate;
+            document.getElementById('editCommissionRateModal').classList.remove('hidden');
+        } else if (type === 'networkFee') {
+            const network = settings[1];
+            document.getElementById('networkFee').value = network.value;
+            document.getElementById('effectiveDateNetwork').value = network.effectiveDate;
+            document.getElementById('editNetworkFeeModal').classList.remove('hidden');
+        }
+    }
+
+    function closeEditModal(type) {
+        if (type === 'commissionRate') {
+            document.getElementById('editCommissionRateModal').classList.add('hidden');
+        } else if (type === 'networkFee') {
+            document.getElementById('editNetworkFeeModal').classList.add('hidden');
+        }
+    }
+
+    document.getElementById('editCommissionRateForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const commissionRate = document.getElementById('commissionRate').value;
+        const effectiveDate = document.getElementById('effectiveDateCommission').value;
+
+        settings[0].value = commissionRate;
+        settings[0].effectiveDate = effectiveDate;
+
+        saveSettings();
+        updateTable();
+        closeEditModal('commissionRate');
+    });
+
+    document.getElementById('editNetworkFeeForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const networkFee = document.getElementById('networkFee').value;
+        const effectiveDate = document.getElementById('effectiveDateNetwork').value;
+
+        settings[1].value = networkFee;
+        settings[1].effectiveDate = effectiveDate;
+
+        saveSettings();
+        updateTable();
+        closeEditModal('networkFee');
+    });
+
+    function saveSettings() {
+        fetch('/api/settings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(settings),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => console.log('Settings saved:', data))
+        .catch(error => console.error('Error saving settings:', error));
+    }
+
+    function updateTable() {
+        const commissionRateRow = document.querySelector('tbody tr:first-child');
+        commissionRateRow.children[1].textContent = settings[0].value;
+        commissionRateRow.children[2].textContent = settings[0].effectiveDate || "N/A";
+
+        const networkFeeRow = document.querySelectorAll('tbody tr')[1];
+        networkFeeRow.children[1].textContent = settings[1].value;
+        networkFeeRow.children[2].textContent = settings[1].effectiveDate || "N/A";
+    }
+</script>
+</body>
+</html>
