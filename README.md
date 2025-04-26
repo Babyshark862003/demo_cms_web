@@ -1,4 +1,5 @@
 **Project Title: BUILDING A PAYMENT RECONCILIATION SYSTEM FOR AFFILIATE MARKETING ACTIVITIES**
+
 ***Overview***
 This research project aims to examine the traditional commission payment reconciliation process in affiliate marketing. It involves conducting interviews with industry experts and analyzing data from over 5,400 observations across 196 publishers. The study focuses on affiliate marketing operations between September 1, 2024, and January 31, 2025.
 
